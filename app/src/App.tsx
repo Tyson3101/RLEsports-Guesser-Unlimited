@@ -4,7 +4,7 @@ import Players from "./data/players.json";
 import "./css/App.css";
 import Guess from "./interfaces/Guess";
 import evaluateGuess from "./util/evaluateGuess";
-import constructPlayerObject from "./util/playerObject";
+import getPlayerInfo from "./util/playerObject";
 import Player from "./interfaces/Player";
 import SearchBar from "./components/Search/SearchBar";
 import Header from "./components/Header/Header";
@@ -35,9 +35,9 @@ function App() {
     setShowEndGameModal(false);
     setGameFinished(false);
     const randomPlayer = Players[Math.floor(Math.random() * Players.length)];
-    setCurrentPlayer(constructPlayerObject(randomPlayer));
+    setCurrentPlayer(getPlayerInfo(randomPlayer));
     setGuessedPlayers([]);
-    saveGameState(constructPlayerObject(randomPlayer), []);
+    saveGameState(getPlayerInfo(randomPlayer), []);
   };
   const guessSelected = (player: Player) => {
     const guess = evaluateGuess(player, currentPlayer);
@@ -70,11 +70,9 @@ function App() {
     const filteredPlayers = Players.filter(validPlayer);
     const randomPlayer =
       filteredPlayers[Math.floor(Math.random() * filteredPlayers.length)];
-    setCurrentPlayer(constructPlayerObject(randomPlayer));
-    saveGameState(constructPlayerObject(randomPlayer), []);
+    setCurrentPlayer(getPlayerInfo(randomPlayer));
+    saveGameState(getPlayerInfo(randomPlayer), []);
   };
-
-  console.log(currentPlayer, currentPlayer?.region);
 
   useEffect(() => {
     const savedGameState = loadGameState();

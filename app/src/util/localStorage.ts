@@ -3,7 +3,7 @@ import Guess from "../interfaces/Guess";
 import Player from "../interfaces/Player";
 import Settings from "../interfaces/Settings";
 import evaluateGuess from "./evaluateGuess";
-import constructPlayerObject from "./playerObject";
+import getPlayerInfo from "./playerObject";
 
 function saveGameState(
   currentPlayer: Player,
@@ -30,11 +30,11 @@ function loadGameState(): {
 } | null {
   const gameState = JSON.parse(localStorage.getItem("gameState")!);
   if (!gameState?.currentPlayer?.id) return null;
-  const currentPlayer = constructPlayerObject(gameState.currentPlayer);
+  const currentPlayer = getPlayerInfo(gameState.currentPlayer);
   const guessedPlayers = gameState.guessedPlayers.map((plr: Player) => ({
     //@ts-ignore
-    player: constructPlayerObject(plr),
-    ...evaluateGuess(constructPlayerObject(plr), currentPlayer),
+    player: getPlayerInfo(plr),
+    ...evaluateGuess(getPlayerInfo(plr), currentPlayer),
   }));
 
   const returnGameState = {

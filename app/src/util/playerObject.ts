@@ -3,7 +3,7 @@ import Players from "../data/players.json";
 import calculateAge from "./ageFromDOB";
 import Countries from "country-list-js";
 
-function constructPlayerObject(passedPlayer: { id: number; name?: string }) {
+function getPlayerInfo(passedPlayer: { id: number; name?: string }) {
   let player: Player = passedPlayer as Player;
   if (!passedPlayer.name && passedPlayer.id)
     player = Players.find((p) => p.id === passedPlayer.id) as Player;
@@ -30,4 +30,4 @@ function findFlagCodeUK(nationality: string) {
   return "";
 }
 
-export default constructPlayerObject;
+export default getPlayerInfo;

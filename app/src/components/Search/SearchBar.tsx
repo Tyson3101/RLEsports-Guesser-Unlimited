@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
 import PlayersJSON from "../../data/players.json";
 import Player from "../../interfaces/Player";
-import constructPlayerObject from "../../util/playerObject";
+import getPlayerInfo from "../../util/playerObject";
 import "../../css/SearchBar.css";
 import { AiOutlineSearch } from "react-icons/ai";
 
@@ -29,7 +29,7 @@ function SearchBar({
       : Players.filter(
           (player) =>
             player.name.toLowerCase().slice(0, inputLength) === inputValue
-        ).map((player) => constructPlayerObject(player));
+        ).map((player) => getPlayerInfo(player));
   };
 
   const getSuggestionValue = (suggestion: Player) => suggestion.name;
@@ -57,7 +57,7 @@ function SearchBar({
     { suggestion }: { suggestion: Player }
   ) => {
     setValue("");
-    guessSelected(constructPlayerObject(suggestion));
+    guessSelected(getPlayerInfo(suggestion));
   };
 
   const inputProps = {
