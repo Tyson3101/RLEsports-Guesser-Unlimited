@@ -1,0 +1,231 @@
+.modal {
+  position: absolute;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.hide {
+  display: none;
+}
+
+.modal .emojis {
+  font-size: 0.3em;
+}
+
+.modal .line {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0.5px;
+  position: relative;
+  left: 50%;
+  width: 130%;
+  transform: translateX(-50%);
+}
+
+.modal > div {
+  background-color: rgb(34, 29, 29);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 2vh 7vw;
+  position: relative;
+  text-align: center;
+}
+
+.modal .closeIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modal .closeIcon:hover {
+  transition: color 0.1s ease-in-out;
+  color: rgb(162, 151, 151);
+}
+
+.modal .content {
+  margin: 2rem 0;
+}
+
+.modal h1 {
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.endGameModal .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.endGameModal .footer button {
+  margin-top: 1.4rem;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: black;
+}
+
+.endGameModal .footer button:hover {
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgb(162, 151, 151);
+}
+
+.endGameModal .footer button.playAgain {
+  background-color: rgb(56, 104, 56);
+  color: white;
+}
+
+.endGameModal .footer button.playAgain:hover {
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgb(78, 140, 78);
+}
+
+.modal .infoModal .content {
+  margin-top: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 0.3rem;
+  max-width: max(20vw, 19rem);
+}
+
+.modal .infoModal .content p {
+  font-size: 1.1em;
+}
+
+.modal .statsModal .content p {
+  font-size: 1.6em;
+}
+
+.modal > div.settingsModal {
+  padding: 2vh 7vw;
+}
+
+.modal .settingsModal .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal .settingsModal .content .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.modal .settingsModal .content button.button {
+  height: 2rem;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: black;
+}
+
+.modal .settingsModal .content button.button:hover {
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgb(162, 151, 151);
+}
+
+.modal .settingsModal .content button.button:disabled {
+  background-color: rgb(162, 151, 151);
+  cursor: not-allowed;
+}
+
+.modal .settingsModal .content select {
+  height: 2rem;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  padding: 0 0.5rem;
+  background-color: rgb(239, 243, 239);
+}
+
+.modal .settingsModal .content .chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+  max-width: 50%;
+}
+
+.modal .settingsModal .content .chips.hasChip {
+  margin-right: 1.3rem;
+}
+
+.modal .settingsModal .content .chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 0.2rem;
+  border-radius: 5px;
+  background-color: rgb(239, 243, 239);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  width: fit-content;
+}
+
+.modal .settingsModal .content .chip .delete {
+  padding: 0.2rem 0.3rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: rgb(255, 238, 238);
+  border: none;
+}
+
+.modal .settingsModal .content .chip .delete:hover {
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgb(147, 147, 149);
+}
+
+@media (max-width: 950px) {
+  .modal .line {
+    width: 100%;
+  }
+
+  .modal .infoModal .content {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal .settingsModal .content {
+    max-width: 80vw;
+  }
+}
