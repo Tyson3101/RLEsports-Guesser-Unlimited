@@ -4,11 +4,17 @@ function Header() {
   return (
     <div>
       <h1>
-        RLESPORTS GUESSER <br /> unlimited
+        RLESPORTS GUESSER <br /> UNLIMITED
       </h1>
       <p>
-        unlimited Version of <a href="https://rleguessr.app">rleguessr.app</a> |{" "}
-        <a href="https://twitter.com/RL_Cal">@RL_Cal</a>
+        Unlimited Version of{" "}
+        <a href="https://rleguessr.app" target="_blank">
+          rleguessr.app
+        </a>{" "}
+        |{" "}
+        <a href="https://twitter.com/RL_Cal" target="_blank">
+          @RL_Cal
+        </a>
       </p>
     </div>
   );

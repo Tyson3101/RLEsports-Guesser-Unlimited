@@ -41,7 +41,7 @@ function loadGameState(): {
     currentPlayer,
     guessedPlayers,
     gameFinished:
-      gameState.guessedPlayers?.length === 5 ||
+      gameState.guessedPlayers?.length === 6 ||
       guessedPlayers?.[guessedPlayers?.length - 1]?.player?.id ===
         currentPlayer?.id,
   };

@@ -11,7 +11,7 @@ function Stats({ close }: { close: () => void }) {
     Math.floor(
       (stats?.reduce((acc, stat) => acc + stat.guesses, 0) || 0) /
         (gamesWon + gamesLost)
-    ) - 1 || 0;
+    ) || 0;
 
   return (
     <div className="modal">

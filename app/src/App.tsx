@@ -44,7 +44,7 @@ function App() {
     let guesses = [...guessedPlayers, guess];
     setGuessedPlayers(guesses);
     let finished = false;
-    let gameStat = { winner: false, guesses: guesses.length + 1 };
+    let gameStat = { winner: false, guesses: guesses.length };
     if (player.id === currentPlayer.id) {
       finished = true;
       gameStat.winner = true;
@@ -58,10 +58,10 @@ function App() {
   };
 
   const validPlayer = (player: any) => {
-    if (settings.excludeRegions?.includes(player.region)) return false;
-    if (settings.teamRequired && player.team?.toLowerCase() === "none")
+    if (settings?.teamRequired && player.team.toLowerCase() == "none")
       return false;
-    if (settings.rlcsLanAppearancesRequired && player.rlcsLanAppearances === 0)
+    if (settings?.excludeRegions?.includes(player.region)) return false;
+    if (settings?.rlcsLanAppearancesRequired && !player.rlcsLanAppearances)
       return false;
     return true;
   };
@@ -72,12 +72,23 @@ function App() {
       filteredPlayers[Math.floor(Math.random() * filteredPlayers.length)];
     setCurrentPlayer(constructPlayerObject(randomPlayer));
     saveGameState(constructPlayerObject(randomPlayer), []);
-    console.log(randomPlayer);
   };
+
+  console.log(currentPlayer, currentPlayer?.region);
 
   useEffect(() => {
     const savedGameState = loadGameState();
     let savedSettings = loadSettings();
+    if (!savedSettings) {
+      const defaultSettings: Settings = {
+        teamRequired: false,
+        excludeRegions: [],
+        rlcsLanAppearancesRequired: false,
+      };
+      saveSettings(defaultSettings);
+      savedSettings = defaultSettings;
+    }
+    setSettings(savedSettings);
     if (savedGameState) {
       setCurrentPlayer(savedGameState.currentPlayer);
       setGuessedPlayers(savedGameState.guessedPlayers);
@@ -88,15 +99,6 @@ function App() {
       return;
     } else {
       changePlayer();
-    }
-    if (!savedSettings) {
-      const defaultSettings: Settings = {
-        teamRequired: false,
-        excludeRegions: [],
-        rlcsLanAppearancesRequired: false,
-      };
-      saveSettings(defaultSettings);
-      savedSettings = defaultSettings;
     }
   }, []);
 
