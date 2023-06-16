@@ -20,6 +20,15 @@ a {
   color: rgb(92, 85, 221);
 }
 
+.creator a {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
 .flagIcon {
   border: 1px white solid;
 }

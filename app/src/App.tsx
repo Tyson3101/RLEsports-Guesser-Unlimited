@@ -9,7 +9,7 @@ import Player from "./interfaces/Player";
 import SearchBar from "./components/Search/SearchBar";
 import Header from "./components/Header/Header";
 import GuessCounter from "./components/GuessBoard/GuessCounter";
-import { AiFillInfoCircle } from "react-icons/ai";
+import { AiFillGithub, AiFillInfoCircle } from "react-icons/ai";
 import { ImStatsDots } from "react-icons/im";
 import { FiSettings } from "react-icons/fi";
 import {
@@ -34,8 +34,7 @@ function App() {
   const playAgain = () => {
     setShowEndGameModal(false);
     setGameFinished(false);
-    const randomPlayer = Players[Math.floor(Math.random() * Players.length)];
-    setCurrentPlayer(getPlayerInfo(randomPlayer));
+    const randomPlayer = changePlayer();
     setGuessedPlayers([]);
     saveGameState(getPlayerInfo(randomPlayer), []);
   };
@@ -72,6 +71,7 @@ function App() {
       filteredPlayers[Math.floor(Math.random() * filteredPlayers.length)];
     setCurrentPlayer(getPlayerInfo(randomPlayer));
     saveGameState(getPlayerInfo(randomPlayer), []);
+    return randomPlayer;
   };
 
   useEffect(() => {
@@ -160,6 +160,14 @@ function App() {
           </button>
         </div>
       ) : null}
+      <div className="creator">
+        <a
+          href="https://github.com/Tyson3101/RLEsports-Guesser-Unlimited"
+          target="_blank"
+        >
+          <AiFillGithub /> Tyson3101
+        </a>
+      </div>
     </div>
   );
 }
